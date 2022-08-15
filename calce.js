@@ -15,6 +15,8 @@ function div(a,b){
     console.log("Divition : "+(a/b));
 }
 
+add(12,9)
+
 module.exports.addition = add
 module.exports.sub = sub
 module.exports.myl = mul
