@@ -24,6 +24,8 @@ app.get("/",function(req,res){
 
 var sessionController = require("./controller/sessionController")
 var roleController = require("./controller/roleController")
+var userController = require("./controller/userController")
+
 
 app.post("/login",sessionController.login)
 app.post("/signup",sessionController.signup)
@@ -35,6 +37,9 @@ app.get("/roles",roleController.getAllRoles)
 app.get("/roles/:roleId",roleController.getRoleById)
 app.delete("/roles/:roleId",roleController.deleteRoleById)
 app.put("/roles",roleController.updateRole)
+
+// Users
+app.post("/users",userController.addUsers)
 
 //sync 
 //simple 
