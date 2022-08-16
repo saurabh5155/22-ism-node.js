@@ -107,7 +107,36 @@ function deleteRoleById(req,res){
     })
 }
 
+function updateRole(req,res){
+    RoleModel.findByIdAndUpdate({_id:req.body.roleId},{roleName:req.body.roleName},function(err,data){
+        if (err) {
+            console.log("error in updateRole() " + err);
+            res.json({
+                status: -1,
+                msg: "Role could not updated...",
+                data: err
+            })
+        } else {
+            if (data == null) {
+                res.json({
+                    status: 200,
+                    msg: "Invalid roleId",
+                    data: req.body.roleId
+                })
+            } else {
+                res.json({
+                    status: 200,
+                    msg: "Role Updated...",
+                    data: req.body
+                })
+            }
+
+        }
+    })
+}
+
 module.exports.addRole = addRole
 module.exports.getAllRoles = getAllRoles
 module.exports.getRoleById = getRoleById
 module.exports.deleteRoleById = deleteRoleById
+module.exports.updateRole = updateRole
