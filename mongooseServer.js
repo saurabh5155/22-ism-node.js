@@ -27,8 +27,6 @@ var roleController = require("./controller/roleController")
 var userController = require("./controller/userController")
 
 
-app.post("/login",sessionController.login)
-app.post("/signup",sessionController.signup)
 
 
 // Roles
@@ -40,6 +38,9 @@ app.put("/roles",roleController.updateRole)
 
 // Users
 app.post("/users",userController.addUsers)
+app.post("/signup",userController.addUsers)
+app.post("/login",sessionController.login)
+app.get("/users",userController.getAllUsers)    
 
 //sync 
 //simple 

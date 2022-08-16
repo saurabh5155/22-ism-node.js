@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 let UserModel = require("../model/userModel")
 
 module.exports.addUsers = function (req,res){
@@ -28,5 +29,18 @@ module.exports.addUsers = function (req,res){
             })
         }
 
+    })
+}
+
+
+module.exports.getAllUsers = function(req,res){
+    UserModel.find().populate("role").exec(function(err,data){
+        if (err) {
+            res.json({
+                status: -1, msg: "SMW", data: err
+            })
+        } else {
+            res.json({ status: 200, msg: "USER RET", data: data })
+        }
     })
 }
