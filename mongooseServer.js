@@ -31,6 +31,7 @@ app.post("/signup",sessionController.signup)
 
 // Roles
 app.post("/roles",roleController.addRole)
+app.get("/roles",roleController.getAllRoles)
 
 //sync 
 //simple 
