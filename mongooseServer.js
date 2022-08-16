@@ -5,17 +5,33 @@ let app  = express();
 
 // console.log(app);
 
-app.get("/login",function(req,res){
-    res.end("login");      
+
+// middle war
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+
+app.get("/",function(req,res){
+    res.end("----Welcome----");
 })
 
-app.get("/signup",function(req,res){
-    res.end("signup");
-})
+// app.get("/login",function(req,res){
+//     res.end("login");      
+// })
+
+// app.get("/signup",function(req,res){
+//     res.end("signup");
+// })
+
+var sessionController = require("./controller/sessionController")
+
+app.post("/login",sessionController.login)
+app.post("/signup",sessionController.signup)
 
 
-
-let post = app.listen(9898,function(){
+//sync 
+//simple 
+//js -> sync , callback 
+let port = app.listen(9898,function(){
     console.log("....server is started on port number 9898....");
 })
 
