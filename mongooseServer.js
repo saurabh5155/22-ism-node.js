@@ -3,7 +3,17 @@ let mongoose = require("mongoose")
 
 let app  = express();
 
-console.log(app);
+// console.log(app);
+
+app.get("/login",function(req,res){
+    res.end("login");      
+})
+
+app.get("/signup",function(req,res){
+    res.end("signup");
+})
+
+
 
 let post = app.listen(9898,function(){
     console.log("....server is started on port number 9898....");
