@@ -1,12 +1,13 @@
 var express = require("express")
 let mongoose = require("mongoose")
-
+let cors = require("cors")
 let app  = express();
 
 // console.log(app);
 
 
 // middle war
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
