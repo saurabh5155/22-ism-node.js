@@ -23,10 +23,14 @@ app.get("/",function(req,res){
 // })
 
 var sessionController = require("./controller/sessionController")
+var roleController = require("./controller/roleController")
 
 app.post("/login",sessionController.login)
 app.post("/signup",sessionController.signup)
 
+
+// Roles
+app.post("/roles",roleController.addRole)
 
 //sync 
 //simple 
