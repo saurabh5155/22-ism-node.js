@@ -47,7 +47,39 @@ function getAllRoles(req,res){
     })
 }
 
+function getRoleById(req,res){
+     //console.log(req.body);
+    //console.log(req.params);
+    //console.log(req.query);
+
+    RoleModel.findById({_id:req.params.roleId},function(err,data){
+        if (err) {
+            console.log("error in getRoleById()" + err);
+            res.json({
+                status: -1,
+                msg: "Role could not reterived...",
+                data: err
+            })
+        } else {
+            if (data == null) {
+                res.json({
+                    status: 200,
+                    msg: "Invalid roleId",
+                    data: req.params.roleId
+                })
+            } else {
+                res.json({
+                    status: 200,
+                    msg: "Role Reterived...",
+                    data: data
+                })
+            }
+
+        }
+    })
+}
+
 module.exports.addRole = addRole
 module.exports.getAllRoles = getAllRoles
-
+module.exports.getRoleById = getRoleById
 
