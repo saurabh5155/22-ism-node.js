@@ -33,7 +33,7 @@ app.post("/signup",sessionController.signup)
 app.post("/roles",roleController.addRole)
 app.get("/roles",roleController.getAllRoles)
 app.get("/roles/:roleId",roleController.getRoleById)
-
+app.delete("/roles/:roleId",roleController.deleteRoleById)
 //sync 
 //simple 
 //js -> sync , callback 

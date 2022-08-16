@@ -79,7 +79,35 @@ function getRoleById(req,res){
     })
 }
 
+function deleteRoleById(req,res){
+    RoleModel.findByIdAndDelete({_id:req.params.roleId},function(err,data){
+        if (err) {
+            console.log("error in deleteRoleById" + err);
+            res.json({
+                status: -1,
+                msg: "Role could not deleted...",
+                data: err
+            })
+        } else {
+            if (data == null) {
+                res.json({
+                    status: 200,
+                    msg: "Invalid roleId",
+                    data: req.params.roleId
+                })
+            } else {
+                res.json({
+                    status: 200,
+                    msg: "Role deleted...",
+                    data: data
+                })
+            }
+
+        }
+    })
+}
+
 module.exports.addRole = addRole
 module.exports.getAllRoles = getAllRoles
 module.exports.getRoleById = getRoleById
-
+module.exports.deleteRoleById = deleteRoleById
